@@ -1,0 +1,11 @@
+Makefile
+*.d
+*.pyc
+config.*
+*~
+*#
+autom4te.cache
+
+*-build
+*-stage
+*-test
