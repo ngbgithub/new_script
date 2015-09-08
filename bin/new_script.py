@@ -63,45 +63,6 @@ def readCommandLine():
     return args
 
 
-def sampleQuery(cursor, productTypes):
-    '''Do X.
-    '''
-    query = '''
-        select
-            h.account_number,
-            cast(h.gl_balance as number(26, 2)) as gl_balance
-        from
-            bdr_core.liability_account_history h
-        where
-            h.account_status != 4
-            and h.product_type in ({products})
-            -- and rownum < 11 -- debug
-    '''
-
-    # We have to do this because there's no way to use ? arguments
-    #   with variable numbers of arguments.
-    if not [type(p)==int for p in productTypes]:
-        # Be positive we can't have SQL injections.
-        raise Exception('Product types must be integers') 
-    query = query.format(products=', '.join(map(str, productTypes)))
-
-    cursor.execute(query)
-
-    logger.info('Getting first batch of rows...')
-    row = cursor.fetchone()
-    c = 0
-
-    accounts = {}
-    logger.info('Getting additional rows...')
-    while row is not None:
-        c += 1
-
-
-
-        row = cursor.fetchone()
-    logger.info('{} rows retrieved.'.format(c))
-
-
 if __name__ == '__main__':
     main()
 
