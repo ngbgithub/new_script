@@ -9,7 +9,7 @@ def configureLogger(confFilename):
     '''Read the logging.conf config file, and set up the logger
     appropriately.
     '''
-    import date_file_handler
+    from . import date_file_handler
     import logging.config
 
     # Check that the appropriate filename exists.

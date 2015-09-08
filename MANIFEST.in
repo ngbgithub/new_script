@@ -1,0 +1,11 @@
+include MANIFEST.in
+include Makefile
+include README.md
+include setup.cfg
+include setup.py
+include bin/new_script/__init__.py
+include bin/new_script/boilerplate.py
+include bin/new_script/date_file_handler.py
+include bin/new_script.py
+include etc/new_script/logging.conf
+include var/log/for_git.txt
