@@ -46,7 +46,7 @@ def readCommandLine():
     class Default:
         def __init__(self):
             self.with_trace = False
-            self.products = [4107]
+            self.products = [100,]
     d = Default()
 
     parser.add_argument('-t', '--with-trace', action='store_true',
