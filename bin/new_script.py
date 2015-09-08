@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-''''Do X.
+'''Do X.
 '''
 
 from __future__ import print_function
