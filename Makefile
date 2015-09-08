@@ -7,7 +7,7 @@ build:
 	$(PYTHON) setup.py build
 
 clean:
-	find . -type f -name "*~" -exec rm -vf {} \;
+	find . -type f \( -name "*~" -o -name "*.pyc" \) -exec rm -vf {} \;
 
 install:
 	$(PYTHON) setup.py install
