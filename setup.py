@@ -8,8 +8,7 @@ import os, sys
 
 class MyInstallData(distutils.command.install_data.install_data):
     def run(self, *args, **kwargs):
-        '''Create a blank log file if it doesn't exist, so that we can
-        install it.
+        '''Create a directory for log files.
         '''
         os.makedirs(os.path.join(self.install_dir, 'var', 'log'),
                     exist_ok=True)
