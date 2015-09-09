@@ -18,22 +18,25 @@ class MyInstallData(distutils.command.install_data.install_data):
 
 class MyInstallScripts(distutils.command.install_scripts.install_scripts):
     def run(self, *args, **kwargs):
-        '''Change the main script's name from new_script.py to new_script after
+        '''Change the main script's name from clrn.py to cooklrn after
         installation.
         '''
+        import os.path
+
         rc = super().run(*args, **kwargs)
 
-        fnames = ['new_script.py',]
+        fnames = [('new_script.py', 'new_script'),]
         for script in self.get_outputs():
-            for fname in fnames:
-                if script.endswith(fname):
-                    target = os.path.splitext(script)[0]
+            for srcbase,targetbase in fnames:
+                dir,basename = os.path.split(script)
+                if basename==srcbase:
+                    target=os.path.join(dir, targetbase)
                     print('renaming {script} to {target}'
                           ''.format(script=script, target=target))
                     os.rename(script, target)
 
         return rc
-            
+
 
 distutils.core.setup(name='new_script',
                      version='000.000.001',
