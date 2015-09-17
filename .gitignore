@@ -3,12 +3,14 @@
 config.*
 *~
 *#
+*.log
 
 autom4te.cache
 Makefile
 
 MANIFEST
-build/*
+build
+_build
 *-build
 *-stage
 *-test
