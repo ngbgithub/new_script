@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 '''Do X.
 '''
@@ -22,7 +22,6 @@ def main():
     '''This is the function that is executed when the script is called
     from the command line.
     '''
-    import new_script.boilerplate as boilerplate
     emitTrace = True
     try:
         args = readCommandLine() # This may spit out a help message and quit.
