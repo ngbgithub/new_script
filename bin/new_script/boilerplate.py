@@ -6,8 +6,13 @@ loggerIsInitialized = False
 
 
 def configureLogger(confFilename):
-    '''Read the logging.conf config file, and set up the logger
+    '''Read the ``logging.conf`` config file, and set up the logger
     appropriately.
+
+    :param str confFilename: The filename to be read, as described \
+    in the documentation for the Python \
+    :func:`~logging.config.fileConfig()` function.
+
     '''
     from . import date_file_handler
     import logging.config
@@ -39,6 +44,9 @@ def configureLogger(confFilename):
 
 def logArgs(args):
     '''Print a summary of the command line arguments to the logger.
+
+    :param argparse.Namespace args: The output of the \
+    :meth:`argparse.ArgumentParser.parse_args()` method.
     '''
     import inspect
     bannerWidth = 30
@@ -58,6 +66,12 @@ def manageException(e, emitTrace):
     '''Print out an error message from an exception in different
     possible ways, depending on whether the user wants a stack trace,
     and whether the logger is enabled.
+
+    :param BaseException e: Exception to be treated.
+
+    :param bool emitTrace: Flag indicating whether or not a stack \
+    trace should be printed in the event of an uncaught exception.
+
     '''
     msg = '{}'.format(e)
     if not loggerIsInitialized:
