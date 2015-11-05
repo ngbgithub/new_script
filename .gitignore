@@ -4,6 +4,7 @@ config.*
 *~
 *#
 *.log
+.DS_Store
 
 autom4te.cache
 Makefile

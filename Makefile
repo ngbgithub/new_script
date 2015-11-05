@@ -12,6 +12,9 @@ clean:
 install:
 	$(PYTHON) setup.py install
 
+runtests:
+	$(PYTHON) -m unittest discover -t bin -s bin/new_script
+
 sdist:
 	$(PYTHON) setup.py sdist
 
