@@ -8,6 +8,7 @@ build:
 
 clean:
 	find . -type f \( -name "*~" -o -name "*.pyc" \) -exec rm -vf {} \;
+	rm -rvf config.status config.log autom4te.cache/
 
 install:
 	$(PYTHON) setup.py install
