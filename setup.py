@@ -18,8 +18,7 @@ class MyInstallData(distutils.command.install_data.install_data):
 
 class MyInstallScripts(distutils.command.install_scripts.install_scripts):
     def run(self, *args, **kwargs):
-        '''Change the main script's name from new_script.py to new_script
-        after installation.
+        '''Change the main script's name after installation.
         '''
         import os.path
 
