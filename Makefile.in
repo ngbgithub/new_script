@@ -1,6 +1,6 @@
 # This is a small, minimalist wrapper for Make around Python's distutils.
 
-PYTHON := python3
+PYTHON := @PYTHON@
 .DEFAULT_GOAL := build
 
 build:
