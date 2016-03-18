@@ -15,7 +15,7 @@ module_path=$(pwd)/../../bin
 sphinx-apidoc \
     --module-first \
     --full \
-    --doc-project=cooklrn \
+    --doc-project=new_script \
     --doc-author="John Doe" \
     --doc-version="000.001" \
     --doc-release="000.001.001" \
