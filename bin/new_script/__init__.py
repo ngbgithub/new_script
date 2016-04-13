@@ -3,6 +3,7 @@
 
 __all__ = [
     'boilerplate',
+    'conf',
     'date_file_handler',
     ]
 
