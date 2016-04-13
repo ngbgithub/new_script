@@ -11,7 +11,7 @@ clean:
 	rm -rvf config.status config.log autom4te.cache/
 
 install:
-	$(PYTHON) setup.py install
+	$(PYTHON) setup.py install --prefix=@prefix@
 
 runtests:
 	$(PYTHON) -m unittest discover -t bin -s bin/new_script

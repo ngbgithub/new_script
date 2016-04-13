@@ -10,6 +10,8 @@ import os, sys
 
 PACKAGE_NAME = 'new_script'
 
+## @TODO Figure out how this should get set by default.  (Maybe
+##   initialize it to $HOME/.local ?)
 _prefix = None
 
 
@@ -18,15 +20,6 @@ class MyInstall(distutils.command.install.install):
         '''Persist the installation prefix so that it can be used in
         :class:`MyBuildPy. <MyBuildPy>`
         '''
-
-        # NOTE: If you get an error saying something like "can't
-        #   combine user with prefix, exec_prefix/home or
-        #   install_(plat)base", it may be caused by a system-level
-        #   distutils.cfg with an [install] prefix=/usr/local line,
-        #   which conflicts with the --home option.  A workaround is
-        #   to specify --prefix= , with no text (not even whitespace)
-        #   after the =.
-
         assert not (self.home is not None and self.prefix is not None), \
             'distutils enforces that either home or prefix is specified, ' \
             ' but not both.'
