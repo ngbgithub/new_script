@@ -19,13 +19,15 @@ boilerplate.configureLogger(os.path.join(CONF_DIR, 'script_logging.conf'))
 logger = logging.getLogger('main')
 
 
-def main():
+def main(argv):
     '''This is the function that is executed when the script is called
     from the command line.
     '''
     emitTrace = True
+    rc = 0
     try:
-        args = readCommandLine() # This may spit out a help message and quit.
+        # Note: readCommandLine() may spit out a help message and quit.
+        args = readCommandLine(argv)
         emitTrace = args.with_trace
         logger.info('Initializing...')
         boilerplate.logArgs(args)
@@ -34,9 +36,11 @@ def main():
 
     except Exception as e:
         boilerplate.manageException(e, emitTrace)
+        rc = -1
+    return rc
 
 
-def readCommandLine():
+def readCommandLine(argv):
     '''Deal with the command line.
     '''
     import argparse
@@ -58,13 +62,13 @@ def readCommandLine():
                         ' relevant product types. (default: {d})'.format(\
             d=' '.join(map(str, d.products))))
 
-    args = parser.parse_args()
+    args = parser.parse_args(argv[1:])
 
     return args
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main(sys.argv))
 
 
 
