@@ -12,7 +12,9 @@ dest_scriptname=bar
 # Call sed to fix the module name inside the files:
 
 read -d '' files <<EOF
+./README.md
 ./setup.py
+./Makefile.in
 ./bin/$orig_scriptname
 ./bin/$orig_modname/__init__.py
 ./bin/$orig_modname/boilerplate.py
