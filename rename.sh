@@ -47,7 +47,7 @@ done
 
 # Call sed and rename files according to the new script name.
 
-sed -i -e "s/${orig_scriptname}_logging/${dest_scriptname}_logging/g" \
+sed -i '' -e "s/${orig_scriptname}_logging/${dest_scriptname}_logging/g" \
    ./bin/$orig_scriptname || exit -3
 
 mv ./bin/$orig_scriptname ./bin/$dest_scriptname || exit -4
