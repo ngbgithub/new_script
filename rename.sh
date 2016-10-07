@@ -27,7 +27,7 @@ EOF
 
 for f in $files ; do
 
-    sed -i -e "s/$orig_modname/$dest_modname/g" $f || exit -1
+    sed -i '' -e "s/$orig_modname/$dest_modname/g" $f || exit -1
 
 done
 
