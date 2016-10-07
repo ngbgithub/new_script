@@ -22,7 +22,7 @@ sdist:
 .PHONY: build clean install sdist html dirhtml singlehtml pickle json htmlhelp qthelp applehelp devhelp epub latex latexpdf latexpdfja text man texinfo info gettext changes linkcheck doctest coverage xml pseudoxml
 
 html dirhtml singlehtml pickle json htmlhelp qthelp applehelp devhelp epub latex latexpdf latexpdfja text man texinfo info gettext changes linkcheck doctest coverage xml pseudoxml:
-	cd share/csscan/doc && make $@
+	cd share/new_script/doc && make $@
 
 
 
