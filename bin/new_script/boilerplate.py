@@ -14,6 +14,7 @@ def configureLogger(confFilename):
     :func:`~logging.config.fileConfig()` function.
 
     '''
+    from . import conf
     from . import date_file_handler
     import logging.config
 
@@ -26,7 +27,7 @@ def configureLogger(confFilename):
     logging.DateFileHandler = date_file_handler.DateFileHandler
 
     confDir = os.path.dirname(confFilename)
-    prefixDir = os.path.abspath(os.path.join(confDir, '..', '..'))
+    prefixDir = conf.prefix()
     # We temporarily change the current working directory so that the
     #   log file can be specified as a relative path.
     orig = os.getcwd()
