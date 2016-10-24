@@ -29,10 +29,16 @@ def main(argv):
         # Note: readCommandLine() may spit out a help message and quit.
         args = readCommandLine(argv)
         emitTrace = args.with_trace
-        logger.info('Initializing...')
-        boilerplate.logArgs(args)
 
-        logger.info('Program complete.')
+        if args.version:
+            import new_script.conf
+            print('{} version {}'.format(PACKAGE_NAME,new_script.conf.version))
+            
+        else:
+            logger.info('Initializing...')
+            boilerplate.logArgs(args)
+
+            logger.info('Program complete.')
 
     except Exception as e:
         boilerplate.manageException(e, emitTrace)
@@ -50,12 +56,17 @@ def readCommandLine(argv):
     class Default:
         def __init__(self):
             self.with_trace = False
+            self.version = False
             self.products = [100,]
     d = Default()
 
     parser.add_argument('-t', '--with-trace', action='store_true',
                         default=d.with_trace,
                         help='Emit a full trace upon encountering an error.')
+
+    parser.add_argument('-v', '--version', action='store_true',
+                        default=d.version,
+                        help='Print the version number and exit')
 
     parser.add_argument('--products', metavar=('XXXX', 'YYYY'), type=int,
                         default=d.products, nargs='+', help='Specify the'

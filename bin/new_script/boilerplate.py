@@ -27,7 +27,7 @@ def configureLogger(confFilename):
     logging.DateFileHandler = date_file_handler.DateFileHandler
 
     confDir = os.path.dirname(confFilename)
-    prefixDir = conf.prefix()
+    prefixDir = conf.prefix
     # We temporarily change the current working directory so that the
     #   log file can be specified as a relative path.
     orig = os.getcwd()
@@ -85,5 +85,4 @@ def manageException(e, emitTrace):
             logger.exception(msg)
         else:
             logger.error(msg)
-
 

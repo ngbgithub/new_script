@@ -67,7 +67,8 @@ class MyBuildPy(distutils.command.build_py.build_py):
         try:
             print('Writing:', filename)
             with open(filename, 'w') as fout:
-                fout.write("prefix='{prefix}'\n".format(prefix=_prefix))
+                fout.write("prefix='{prefix}'\nversion='{version}'\n"
+                           "".format(prefix=_prefix, version=version))
             #ret = super().run(*args, **kwargs)
             ret = distutils.command.build_py.build_py.run(self, *args,
                                                           **kwargs)
