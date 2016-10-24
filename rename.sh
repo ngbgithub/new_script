@@ -27,7 +27,11 @@ EOF
 
 for f in $files ; do
 
-    sed -i '' -e "s/$orig_modname/$dest_modname/g" $f || exit -1
+    # Linux:
+    #sed -i -e "s/$orig_modname/$dest_modname/g" $f || exit $?
+
+    # OS X:
+    sed -i '' -e "s/$orig_modname/$dest_modname/g" $f || exit $?
 
 done
 
@@ -41,19 +45,28 @@ EOF
 
 for d in $dirs ; do
 
-    mv $d $(dirname $d)/$dest_modname || exit -2
+    mv $d $(dirname $d)/$dest_modname || exit $?
 
 done
 
 # Call sed and rename files according to the new script name.
 
-sed -i '' -e "s/${orig_scriptname}_logging/${dest_scriptname}_logging/g" \
-   ./bin/$orig_scriptname || exit -3
+# Linux:
+#sed -i -e "s/${orig_scriptname}_logging/${dest_scriptname}_logging/g" \
+#   ./bin/$orig_scriptname || exit $?
+#sed -i -e "s/${orig_scriptname}_logging/${dest_scriptname}_logging/g" \
+#   setup.py || exit $?
 
-mv ./bin/$orig_scriptname ./bin/$dest_scriptname || exit -4
+# OS X:
+sed -i='' -e "s/${orig_scriptname}_logging/${dest_scriptname}_logging/g" \
+   ./bin/$orig_scriptname || exit $?
+sed -i='' -e "s/${orig_scriptname}_logging/${dest_scriptname}_logging/g" \
+   setup.py || exit $?
+
+mv ./bin/$orig_scriptname ./bin/$dest_scriptname || exit $?
 
 mv ./etc/$dest_modname/${orig_scriptname}_logging.conf \
-        ./etc/$dest_modname/${dest_scriptname}_logging.conf || exit -5
+        ./etc/$dest_modname/${dest_scriptname}_logging.conf || exit $?
 
 
 
