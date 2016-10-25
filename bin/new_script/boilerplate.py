@@ -86,3 +86,24 @@ def manageException(e, emitTrace):
         else:
             logger.error(msg)
 
+
+def openFileOrStd(filename, mode):
+    import sys
+
+    if filename != '-':
+        ret = open(filename, mode)
+    else:
+        if mode == 'w':
+            ret = sys.stdout
+        elif mode == 'r':
+            ret = sys.stdin
+        else:
+            choices = {'w', 'r'}
+            if mode not in choices:
+                raise RuntimeError("If filename is '-', mode must be one of:"
+                                   ' {}'.format(choices))
+
+    return ret
+
+
+            
